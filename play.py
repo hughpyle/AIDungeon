@@ -148,11 +148,11 @@ def instructions():
 
 def play_aidungeon_2():
 
-    console_print(
-        "AI Dungeon 2 will save and use your actions and game to continually improve AI Dungeon."
-        + " If you would like to disable this enter '/nosaving' as an action. This will also turn off the "
-        + "ability to save games."
-    )
+    #console_print(
+    #    "AI Dungeon 2 will save and use your actions and game to continually improve AI Dungeon."
+    #    + " If you would like to disable this enter '/nosaving' as an action. This will also turn off the "
+    #    + "ability to save games."
+    #)
 
     upload_story = True
 
@@ -363,5 +363,11 @@ def play_aidungeon_2():
                     console_print(result)
 
 
+def exception_handler(exception_type, exception, traceback):
+    # Don't print the whole traceback
+    print("%s: %s" % (exception_type.__name__, exception))
+
+
 if __name__ == "__main__":
+    sys.excepthook = exception_handler
     play_aidungeon_2()

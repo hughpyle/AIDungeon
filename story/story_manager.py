@@ -105,8 +105,8 @@ class Story:
         return json.dumps(story_dict)
 
     def save_to_storage(self):
-        print("Saving to storage has been disabled due to abuse of the cloud bucket. Save will now be stored locally.")
-              
+        # print("Saving to storage has been disabled due to abuse of the cloud bucket. Save will now be stored locally.")
+
         self.uuid = str(uuid.uuid1())
 
         save_path = "./saved_stories/"
@@ -139,7 +139,7 @@ class Story:
             cmd = "gsutil cp gs://aidungeonstories/" + file_name + " " + save_path
             os.system(cmd)
             exists = os.path.isfile(os.path.join(save_path, file_name))
-        
+
 
             if exists:
                 with open(os.path.join(save_path, file_name), "r") as fp:
