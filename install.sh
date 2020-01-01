@@ -10,9 +10,9 @@ MIN_PYTHON_VERS="3.4.0"
 MAX_PYTHON_VERS="3.7.9"
 
 version_check () {
-	MAX_VERS=$(echo -e "$(python3 --version | cut -d' ' -f2)\n$MAX_PYTHON_VERS\n$MIN_PYTHON_VERS"\
+	MAX_VERS=$(echo -e "$(python3 --version 2>&1 | cut -d' ' -f2)\n$MAX_PYTHON_VERS\n$MIN_PYTHON_VERS"\
 	| sort -V | tail -n1)
-	MIN_VERS=$(echo -e "$(python3 --version | cut -d' ' -f2)\n$MAX_PYTHON_VERS\n$MIN_PYTHON_VERS"\
+	MIN_VERS=$(echo -e "$(python3 --version 2>&1 | cut -d' ' -f2)\n$MAX_PYTHON_VERS\n$MIN_PYTHON_VERS"\
 	| sort -V | head -n1)
 	if [ "$MIN_VERS" != "$MIN_PYTHON_VERS" ]; then
 		echo "Your installed python version, $(python3 --version), is too old."
