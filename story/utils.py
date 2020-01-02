@@ -1,5 +1,6 @@
 # coding: utf-8
 import re
+import shutil
 from difflib import SequenceMatcher
 
 import yaml
@@ -14,7 +15,9 @@ with open("story/censored_words.txt", "r") as f:
 pf = ProfanityFilter(custom_censor_list=censored_words)
 
 
-def console_print(text, width=75):
+def console_print(text, width=None):
+    if not width:
+        width = shutil.get_terminal_size((72, 24)).columns - 5
     last_newline = 0
     i = 0
     while i < len(text):
